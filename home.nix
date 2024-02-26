@@ -15,6 +15,14 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      blender = prev.blender.overrideAttrs (old: {
+        version = "3.6.9";
+      });
+    })
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -34,6 +42,7 @@
     kate
     thunderbird
     godot_4
+    #blender
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -88,6 +97,9 @@
       credential = {
         credentialStore = "secretservice";
         helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+        "https://dev.azure.com" = {
+          useHttpPath = true;
+        };
       };
       pull = {
         rebase = "true";

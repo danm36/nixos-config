@@ -5,6 +5,7 @@
     # Include the results of the hardware scan.
     # Note: This is symlinked to /etc/nixos/hardware-configuration.nix
     ./hardware-configuration.nix
+    ./modules/nvidia/ideapad.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -61,6 +62,13 @@
   # Configure console keymap
   console.keyMap = "uk";
 
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -109,12 +117,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     libnotify
+    lshw
     wget
     curl
     git
     git-lfs
     git-credential-manager
-    vscode
+    vscode.fhs
     vim
     neovim
     neofetch
