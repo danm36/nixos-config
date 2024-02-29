@@ -44,6 +44,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     libnotify
+    libxcrypt
     lshw
     wget
     curl
@@ -60,6 +61,10 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
+    libz
+    libxcrypt
+    libarchive
+    libx11
     # Add any missing dynamic libraries for unpackaged
     # programs here, NOT in environment.systemPackages.
   ];
