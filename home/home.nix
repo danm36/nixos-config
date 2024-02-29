@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, ... }:
 
 {
+  imports = [
+    ./sh.nix
+    ./git.nix
+    (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/default.nix")
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dmasterson";
@@ -15,17 +21,19 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      blender = prev.blender.overrideAttrs (old: {
-        version = "3.6.9";
-      });
-    })
-  ];
+  # Allow unfree packages
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # # Adds the 'hello' command to your environment. It prints a friendly
+    # # "Hello, world!" when run.
+    # pkgs.hello
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -40,9 +48,10 @@
     # '')
     firefox
     kate
+    neovim
+    vscode.fhs
     thunderbird
     godot_4
-    #blender
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -58,13 +67,10 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    # Development folders
-    "Development/Games/.keep".text = ""; 
-    "Development/Websites/.keep".text = ""; 
+    "Development/Games/.keep".text = "";
+    "Development/Websites/.keep".text = "";
     "Development/Tools/.keep".text = "";
   };
-
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
@@ -87,29 +93,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = "Daniel Masterson";
-    userEmail = "daniel.masterson@novadawnstudios.co.uk";
-    lfs.enable = true;
-    extraConfig = {
-      credential = {
-        credentialStore = "secretservice";
-        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
-        "https://dev.azure.com" = {
-          useHttpPath = true;
-        };
-      };
-      pull = {
-        rebase = "true";
-      };
-      push = {
-        default = "simple";
-      };
-      rebase = {
-        autostash = "true";
-      };
-    };
-  };
 }
