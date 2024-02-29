@@ -9,5 +9,5 @@
     })
   ];
 
-  home.packages = [ blender ];
+  home.packages =  with pkgs; [ blender ];
 }
