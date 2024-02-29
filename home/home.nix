@@ -5,7 +5,6 @@
     ./sh.nix
     ./git.nix
     (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/default.nix")
-    ./blender.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
