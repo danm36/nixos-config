@@ -53,6 +53,7 @@
     vscode.fhs
     thunderbird
     godot_4
+    blender_3_6
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

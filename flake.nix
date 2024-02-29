@@ -22,7 +22,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, plasma-manager, ... }@inputs:
+  outputs = { 
+    self, nixpkgs, home-manager, nixos-hardware,
+    plasma-manager, blender-bin, ... 
+  }@inputs:
   let
     systemSettings = {
       system = "x86_64-linux";
@@ -77,7 +80,7 @@
         };
         modules = [
           ./hosts/epsilon.nix
-          inputs.home-manager.nixosModules.default
+          home-manager.nixosModules.default
           nixos-hardware.nixosModules.lenovo-ideapad-z510
         ];
       };
@@ -86,8 +89,13 @@
       dmasterson = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          inputs.plasma-manager.homeManagerModules.plasma-manager
+          plasma-manager.homeManagerModules.plasma-manager
           ./home/home.nix
+          ({
+            nixpkgs.overlays = [
+              blender-bin.overlays.default
+            ];
+          })
         ];
         extraSpecialArgs = {
           inherit inputs;
