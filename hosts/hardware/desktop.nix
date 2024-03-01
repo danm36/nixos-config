@@ -30,6 +30,7 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = [ pkgs.mesa.drivers ];
   };
 
   # Enable CUPS to print documents.
@@ -55,4 +56,8 @@
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = userSettings.username;
+
+  environment.systemPackages = with pkgs; [
+    glxinfo
+  ];
 }

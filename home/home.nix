@@ -5,6 +5,8 @@
     ./sh.nix
     ./git.nix
     (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/default.nix")
+    ./blender.nix
+    ./godot.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -51,8 +53,6 @@
     neovim
     vscode.fhs
     thunderbird
-    godot_4
-    blender_3_6
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -68,6 +68,8 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    # Development folders
     "Development/Games/.keep".text = "";
     "Development/Websites/.keep".text = "";
     "Development/Tools/.keep".text = "";

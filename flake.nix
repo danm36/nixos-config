@@ -39,7 +39,7 @@
     userSettings = rec {
       username = "dmasterson";
       name = "Daniel";
-      windowManager = "plasma";
+      windowManager = "plasma5";
 
       # Obfuscated to avoid spam bots
       email = _email_1 + _email_5 + _email_3 + _email_2 + _email_4 + _email_6;
@@ -93,7 +93,7 @@
           ./home/home.nix
           ({
             nixpkgs.overlays = [
-              blender-bin.overlays.default
+              #blender-bin.overlays.default
             ];
           })
         ];
