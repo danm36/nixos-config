@@ -2,13 +2,13 @@
 
 {
   imports = [ 
-        ../shared/x11.nix
+        ../shared/wayland.nix
     ];
 
     # Enable the KDE Plasma Desktop Environment.
     services.xserver = {
         desktopManager = {
-            plasma5.enable = true;
+            plasma6.enable = true;
         };
     };
 }

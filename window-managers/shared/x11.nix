@@ -17,6 +17,7 @@
     };
     excludePackages = [ pkgs.xterm ];
     displayManager = {
+      sddm.enable = true;
       #lightdm.enable = true;
       # Enable automatic login for the user.
       autoLogin = {
