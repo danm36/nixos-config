@@ -45,6 +45,7 @@
   environment.systemPackages = with pkgs; [
     libnotify
     lshw
+    fzf
     wget
     curl
     git

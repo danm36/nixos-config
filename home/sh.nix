@@ -5,6 +5,7 @@
     enable = true;
     shellAliases = {
       ".." = "cd ..";
+      "cd" = "z";
     };
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, stylix, userSettings, ... }:
+{ config, pkgs, lib, stylix, userSettings, ... }:
 
 {
   imports = [
@@ -50,11 +50,15 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    kitty
+
+    bitwarden
     firefox
     kate
     neovim
     vscode.fhs
     thunderbird
+    vlc
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -98,4 +102,14 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.rofi = {
+    enable = true;
+    theme = lib.mkForce "docu";
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 }
