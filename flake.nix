@@ -92,10 +92,10 @@
           inherit inputs;
           inherit systemSettings;
           inherit userSettings;
+          inherit (inputs) stylix;
         };
         modules = [
-          inputs.home-manager.nixosModules.default
-          stylix.nixosModules.stylix
+          home-manager.nixosModules.default
           ./hosts/alphavm.nix
         ];
       };
@@ -118,16 +118,11 @@
     };
 
     homeConfigurations = {
-      dmasterson = home-manager.lib.homeManagerConfiguration {
+      "${userSettings.username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           plasma-manager.homeManagerModules.plasma-manager
           ./home/home.nix
-          ({
-            nixpkgs.overlays = [
-              #blender-bin.overlays.default
-            ];
-          })
         ];
         extraSpecialArgs = {
           inherit inputs;

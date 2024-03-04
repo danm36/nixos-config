@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ../hardware-configuration.nix
+      ./alphavm-hardware-configuration.nix
       ./hardware/desktop.nix
     ];
 

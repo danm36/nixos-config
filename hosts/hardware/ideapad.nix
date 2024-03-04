@@ -1,4 +1,5 @@
 { config, lib, ... }:
+
 {
   # Nvidia setup
   hardware.nvidia = {
