@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   programs.plasma = {
     enable = true;
@@ -10,7 +11,7 @@
       {
         location = "bottom";
         alignment = "center";
-        height = 48;
+        height = 32;
         widgets = [
           "org.kde.plasma.panelspacer"
           "org.kde.plasma.kickoff"

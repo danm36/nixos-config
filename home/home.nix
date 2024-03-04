@@ -1,18 +1,20 @@
-{ config, pkgs, userSettings, ... }:
+{ config, pkgs, stylix, userSettings, ... }:
 
 {
   imports = [
+    stylix.homeManagerModules.stylix
+    ../themes/user.nix
     ./sh.nix
     ./git.nix
-    (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/default.nix")
+    (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/user.nix")
     ./blender.nix
     ./godot.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "dmasterson";
-  home.homeDirectory = "/home/dmasterson";
+  home.username = userSettings.username;
+  home.homeDirectory = "/home/" + userSettings.username;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
