@@ -17,6 +17,7 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "alphavm"; # Define your hostname.
+  networking.networkmanager.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

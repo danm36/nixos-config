@@ -43,7 +43,8 @@
     userSettings = rec {
       username = "dmasterson";
       name = "Daniel";
-      windowManager = "plasma5"; # A folder in ~/window-managers.
+      #windowManager = "plasma5";
+      windowManager = "hyprland"; # A folder in ~/window-managers.
       theme = "neutron"; # A folder in ~/themes
       fonts = rec {
         serif = {

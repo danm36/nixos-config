@@ -5,7 +5,6 @@
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
       ./hardware/desktop.nix
-      ./hardware/ideapad.nix
     ];
 
   # Bootloader.
@@ -13,6 +12,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "epsilon"; # Define your hostname.
+  networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -59,4 +59,31 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+
+  # Nvidia setup
+  hardware.nvidia = {
+    modesetting.enable = true;
+
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:3:0:0";
+    };
+
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
+
+  # Add Nvidia XServer drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
