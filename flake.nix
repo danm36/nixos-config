@@ -21,9 +21,9 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-     stylix = {
-        url = "github:danth/stylix";
-     };
+    stylix = {
+      url = "github:danth/stylix";
+    };
   };
 
   outputs = { 
@@ -96,7 +96,6 @@
           inherit (inputs) stylix;
         };
         modules = [
-          home-manager.nixosModules.default
           ./hosts/alphavm.nix
         ];
       };
@@ -111,7 +110,6 @@
           inherit (inputs) stylix;
         };
         modules = [
-          home-manager.nixosModules.default
           nixos-hardware.nixosModules.lenovo-ideapad-z510
           ./hosts/epsilon.nix
         ];
@@ -122,7 +120,9 @@
       "${userSettings.username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          plasma-manager.homeManagerModules.plasma-manager
+          #(lib.mkIf (userSettings.windowManager == "plasma5") {
+          #  modules = plasma-manager.homeManagerModules.plasma-manager;
+          #}) 
           ./home/home.nix
         ];
         extraSpecialArgs = {

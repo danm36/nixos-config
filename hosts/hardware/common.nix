@@ -26,7 +26,7 @@
     "${userSettings.username}" = {
       isNormalUser = true;
       description = userSettings.name;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "video" "wheel" ];
       uid = 1000;
     };
   };
@@ -43,14 +43,22 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    libnotify
-    lshw
-    fzf
-    wget
+    bat
+    btop
     curl
+    dust
+    eza
+    fzf
+    libnotify
+    libsecret
+    lshw
+    powertop
+    wget
+
     git
     git-lfs
     git-credential-manager
+
     home-manager
     nano
     vim

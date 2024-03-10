@@ -4,11 +4,16 @@
   imports = [
     stylix.homeManagerModules.stylix
     ../themes/user.nix
+
     ./sh.nix
     ./git.nix
+
     (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/user.nix")
+    
+    ./batsignal.nix
     ./blender.nix
     ./godot.nix
+    ./neovim.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -53,9 +58,8 @@
     kitty
 
     bitwarden
+    discord
     firefox
-    kate
-    neovim
     vscode.fhs
     thunderbird
     vlc
@@ -105,11 +109,17 @@
 
   programs.rofi = {
     enable = true;
-    theme = lib.mkForce "docu";
+    theme = lib.mkForce "DarkBlue";
   };
 
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
+  };
+
+  programs.atuin = {
+    enable = true;
+    settings = {
+    };
   };
 }

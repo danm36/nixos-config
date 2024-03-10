@@ -8,20 +8,33 @@
 
   environment.systemPackages = with pkgs; [
     grimblast
+    libsForQt5.kwallet
+    libsForQt5.kwallet-pam
+    libsForQt5.kwalletmanager
+    libsForQt5.polkit-kde-agent
   ];
 
   # Security
-  security = {
-    #pam.services.swaylock = {
-    #    text = ''
-    #        auth include login
-    #    '';
-    #};
-    # pam.services.gtklock = {};
-    #pam.services.login.enableGnomeKeyring = true;
+  security.pam.services = {
+    login = {
+      enableKwallet = true;
+    };
+    kwallet = {
+      enableKwallet = true;
+    };
+    ssdm = {
+      enableKwallet = true;
+      text = ''
+        auth include login
+        '';    
+    };
+    swaylock = {
+      enableKwallet = true;
+      text = ''
+        auth include login
+        '';    
+    };
   };
-
-  #services.gnome.gnome-keyring.enable = true;
 
   programs = {
     hyprland = {
