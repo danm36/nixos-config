@@ -5,15 +5,16 @@
     stylix.homeManagerModules.stylix
     ../themes/user.nix
 
-    ./sh.nix
-    ./git.nix
+    ./apps/sh.nix
+    ./apps/git.nix
 
     (./. + "../../window-managers" + ("/" + userSettings.windowManager) + "/user.nix")
     
-    ./batsignal.nix
-    ./blender.nix
-    ./godot.nix
-    ./neovim.nix
+    ./apps/batsignal.nix
+    ./apps/blender.nix
+    ./apps/cava.nix
+    ./apps/godot.nix
+    ./apps/neovim.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

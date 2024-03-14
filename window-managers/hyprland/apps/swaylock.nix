@@ -4,6 +4,7 @@
 {
   wayland.windowManager.hyprland.settings.bind = [
     "SUPER, L, exec, swaylock --grace 0"
+    ",Lid Switch, exec, swaylock --grace 0 & sleep 1 && systemctl suspend"
   ];
 
   programs.swaylock = {

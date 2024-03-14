@@ -116,20 +116,33 @@
         #"SUPER,mouse:273,resizewindow"
         "SUPERCTRL,mouse:272,resizewindow"
       ];
+      gestures = {
+        workspace_swipe = true;
+      };
       decoration = {
-         rounding = 8;
-         inactive_opacity = 0.8;
-         dim_inactive = true;
-         dim_strength = 0.1;
+        rounding = 8;
+        inactive_opacity = 0.8;
+        dim_inactive = true;
+        dim_strength = 0.1;
          blur = {
-           enabled = true;
-           size = 5;
-           passes = 2;
-           ignore_opacity = true;
-           contrast = 1.17;
-           brightness = 0.8;
-         };
-       };
+          enabled = true;
+          size = 5;
+          passes = 2;
+          ignore_opacity = true;
+          contrast = 1.17;
+          brightness = 0.8;
+        };
+      };
+      animations = {
+        enabled = true;
+        bezier = [
+          "bounce, 0.05, 0.9, 0.1, 1.05"
+        ];
+        animation = [
+          "windows, 1, 3, bounce"
+          "workspaces, 1, 4, bounce, slidefade"
+        ];
+      };
     };
     extraConfig = ''
       general {

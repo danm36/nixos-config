@@ -2,9 +2,15 @@
 { config, lib, pkgs, systemSettings, userSettings, ... }:
 
 {
-  wayland.windowManager.hyprland.settings.exec-once = [
-    "waybar"
-  ];
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "waybar"
+    ];
+    bind = [
+      "SUPER, B, exec, pkill -SIGUSR1 waybar"
+      "SUPERALT, B, exec, pkill -SIGUSR2 waybar"
+    ];
+  };
 
   programs.waybar = {
     enable = true;
@@ -19,8 +25,8 @@
         margin = "7 7 3 7";
         spacing = 2;
 
-        modules-left = [ "custom/os" "custom/hyprprofile" "battery" "backlight" "pulseaudio" "cpu" "memory" ];
-        modules-center = [ "hyprland/workspaces" ];
+        modules-left = [ "custom/os" "battery" "cpu" "memory" "backlight" "pulseaudio" ];
+        modules-center = [ "cava#left" "hyprland/workspaces" "cava#right" ];
         modules-right = [ "idle_inhibitor" "tray" "clock" ];
 
         "custom/os" = {
@@ -135,6 +141,29 @@
             "default" = [ "" "" "" ];
           };
           "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
+        };
+        "cava#left" = {
+          autosens = 1;
+          sleep_timer = 5;
+          hide_on_silence = true;
+          "bar_delimiter" = 0;
+          bars = 12;
+          format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+          actions = {
+            "on-click-right" = "mode";
+          };
+        };
+        "cava#right" = {
+          autosens = 1;
+          sleep_timer = 5;
+          hide_on_silence = true;
+          "bar_delimiter" = 0;
+          bars = 12;
+          reverse = true;
+          format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+          actions = {
+            "on-click-right" = "mode";
+          };
         };
       };
     };
