@@ -48,16 +48,16 @@
       theme = "neutron"; # A folder in ~/themes
       fonts = rec {
         serif = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Serif";
+          package = pkgs.fira-code-nerdfont;
+          name = "FuraMono Nerd Font Mono";
         };
         sansSerif = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Sans";
+          package = pkgs.fira-code-nerdfont;
+          name = "FuraMono Nerd Font Mono";
         };
         monospace = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Sans Mono";
+          package = pkgs.fira-code-nerdfont;
+          name = "FuraMono Nerd Font Mono";
         };
         emoji = {
           package = pkgs.noto-fonts-emoji-blob-bin;

@@ -4,11 +4,13 @@
   imports = [
     ./apps/swaylock.nix
     ./apps/waybar.nix
+    ./apps/pyprland.nix
     ./apps/dunst.nix
     ./apps/thunar.nix
   ];
   
   home.packages = with pkgs; [
+    pavucontrol
     swaybg
     swayosd
   ];

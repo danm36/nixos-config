@@ -61,6 +61,7 @@
     bitwarden
     discord
     firefox
+    gnome3.geary
     vscode.fhs
     thunderbird
     vlc

@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, systemSettings, ... }:
+{ config, lib, pkgs, userSettings, systemSettings, ... }:
 
 {
   # Set your time zone.
@@ -45,6 +45,7 @@
   environment.systemPackages = with pkgs; [
     bat
     btop
+    cifs-utils
     curl
     dust
     eza
@@ -52,7 +53,9 @@
     libnotify
     libsecret
     lshw
+    nfs-utils
     powertop
+    samba
     wget
 
     git
@@ -124,6 +127,11 @@
     xorg.libxshmfence
     zlib
   ];
+
+  services.gvfs = {
+    enable = true;
+    package = lib.mkForce pkgs.gnome3.gvfs;
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
