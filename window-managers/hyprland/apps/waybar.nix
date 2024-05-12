@@ -96,7 +96,7 @@
         };
         clock = {
           "interval" = 1;
-          "format" = "{:%a %Y-%m-%d %I:%M:%S %p}";
+          "format" = "{:%a %Y-%m-%d %H:%M:%S}";
           "timezone" = systemSettings.timezone;
           "tooltip-format" = ''
             <big>{:%Y %B}</big>
