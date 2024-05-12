@@ -14,6 +14,7 @@
     ./apps/blender.nix
     ./apps/cava.nix
     ./apps/godot.nix
+    ./apps/flstudio.nix
     ./apps/neovim.nix
   ];
 

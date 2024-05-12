@@ -11,4 +11,13 @@
   stylix.polarity = "dark";
 
   stylix.fonts = userSettings.fonts;
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [ userSettings.fonts.serif.name ];
+      sansSerif = [ userSettings.fonts.sansSerif.name ];
+      monospace = [ userSettings.fonts.monospace.name ];
+    };
+  };
 }

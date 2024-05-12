@@ -18,6 +18,7 @@
 
     "$scratchpadsize" = "size 80% 85%";
     "$scratchpad" = "class:^(scratchpad)$";
+    "$discordscratchpad" = "class:^(discord)$";
     "$thunderbirdscratchpad" = "class:^(thunderbird)$";
     "$pavucontrol" = "class:^(pavucontrol)$";
 

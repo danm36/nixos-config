@@ -49,15 +49,15 @@
       fonts = rec {
         serif = {
           package = pkgs.fira-code-nerdfont;
-          name = "FuraMono Nerd Font Mono";
+          name = "FiraCode Nerd Font";
         };
         sansSerif = {
           package = pkgs.fira-code-nerdfont;
-          name = "FuraMono Nerd Font Mono";
+          name = "FiraCode Nerd Font";
         };
         monospace = {
           package = pkgs.fira-code-nerdfont;
-          name = "FuraMono Nerd Font Mono";
+          name = "FiraCode Nerd Font Mono";
         };
         emoji = {
           package = pkgs.noto-fonts-emoji-blob-bin;

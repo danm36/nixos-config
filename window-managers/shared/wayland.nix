@@ -31,11 +31,12 @@
       layout = systemSettings.keyboardLayout;
       variant = systemSettings.keyboardVariant;
     };
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      enableHidpi = true;
-      theme = "chili";
-    };
+  };
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    enableHidpi = true;
+    theme = "chili";
   };
 }

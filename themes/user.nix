@@ -13,7 +13,6 @@
   stylix.targets = {
     firefox.enable = true;
     gtk.enable = true;
-    kitty.enable = true;
     rofi.enable = true;
   };
 
@@ -23,5 +22,10 @@
       #!/usr/bin/env bash
       swaybg -m fill -i '' + config.stylix.image + '';
       '';
+  };
+
+  programs.kitty = {
+    enable = true;
+    font = userSettings.fonts.monospace;
   };
 }
